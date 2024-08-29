@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Watcher</title>
+    <style>
+        #timeSpent, #clickCount {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Ad Watcher</h1>
+    
+    <div id="timeSpent">Time spent on this page: 0 hours, 0 minutes, and 0 seconds.</div>
+    <div id="clickCount">Button clicked 0 times.</div>
+    <button onclick="incrementClickCount()">Click Me!</button>
+
+    <script>
+        var start;
+        var clickCount = 0;
+
+        window.onload = function() {
+            start = new Date();
+            setInterval(updateTimeSpent, 1000); // Update every second
+        }
+
+        function updateTimeSpent() {
+            var end = new Date();
+            var diff = Math.abs(end - start) / 1000; // Convert milliseconds to seconds
+
+            var hours = Math.floor(diff / 3600);
+            var minutes = Math.floor((diff % 3600) / 60);
+            var seconds = Math.floor(diff % 60);
+
+            document.getElementById("timeSpent").textContent = 
+                "Time spent on this page: " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds.";
+        }
+
+        function incrementClickCount() {
+            clickCount++;
+            document.getElementById("clickCount").textContent = 
+                "Button clicked " + clickCount + " times.";
+        }
+    </script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7321057644267132"
+crossorigin="anonymous"></script>
+<!-- small -->
+<ins class="adsbygoogle"
+style="display:inline-block;width:120px;height:50px"
+data-ad-client="ca-pub-7321057644267132"
+data-ad-slot="7211885659"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</body>
+</html>
